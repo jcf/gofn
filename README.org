@@ -1,0 +1,57 @@
+#+TITLE: GoFn
+
+* Getting started
+Install serverless via Yarn:
+
+#+BEGIN_SRC shell :results silent
+yarn global add serverless
+#+END_SRC
+
+Next we'll create our example Go function:
+
+#+BEGIN_SRC shell :results verbatim
+serverless create -t aws-go-mod -p gofn
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+Serverless: Generating boilerplate...
+Serverless: Generating boilerplate in "/Users/conroyfinnjames/Code/gofn/gofn"
+ _______                             __
+|   _   .-----.----.--.--.-----.----|  .-----.-----.-----.
+|   |___|  -__|   _|  |  |  -__|   _|  |  -__|__ --|__ --|
+|____   |_____|__|  \___/|_____|__| |__|_____|_____|_____|
+|   |   |             The Serverless Application Framework
+|       |                           serverless.com, v1.63.0
+ -------'
+
+Serverless: Successfully generated boilerplate for template: "aws-go-mod"
+#+end_example
+
+Now that we've deployed we can hit up our endpoint!
+
+#+BEGIN_SRC restclient
+GET https://w0bkmn9ee6.execute-api.us-east-1.amazonaws.com/dev/hello
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC js
+{
+  "message": "Go Serverless v1.0! Your function executed successfully!"
+}
+// GET https://w0bkmn9ee6.execute-api.us-east-1.amazonaws.com/dev/hello
+// HTTP/1.1 200 OK
+// Content-Type: application/json
+// Content-Length: 70
+// Connection: keep-alive
+// Date: Thu, 06 Feb 2020 15:52:37 GMT
+// x-amzn-RequestId: 5f198e3d-c385-42c4-8b33-c35f4ce19a10
+// x-amz-apigw-id: He1q1H2UIAMFR9A=
+// X-MyCompany-Func-Reply: hello-handler
+// X-Amzn-Trace-Id: Root=1-5e3c3645-dd96386f370884d69fa36dd0;Sampled=0
+// X-Cache: Miss from cloudfront
+// Via: 1.1 f5f83db1a84a10ea220332d32f95e38b.cloudfront.net (CloudFront)
+// X-Amz-Cf-Pop: LHR3-C2
+// X-Amz-Cf-Id: qDxTOZPPQSC264qVMuhBsYmKFH8SiT0jE41WDQBWlBYzuWdQv2uepw==
+// Request duration: 0.691652s
+#+END_SRC
